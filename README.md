@@ -25,8 +25,8 @@
 | name             | string     | null: false                    |
 | description      | text       | null: false                    |
 | category_id      | integer    | null: false                    |
-| status           | integer    | null: false                    |
-| shipping_fee     | integer    | null: false                    |
+| condition_id     | integer    | null: false                    |
+| shipping_fee_id  | integer    | null: false                    |
 | prefecture_id    | integer    | null: false                    |
 | shipping_day_id  | integer    | null: false                    |
 | sale_price       | integer    | null: false                    |
@@ -59,4 +59,5 @@ has_one :shipping_address
 | phone_number   | string     | null: false                    |
 | purchase       | references | null: false,foreign_key: true  |
 
-has_one :purchases 
+### Association
+belongs_to :purchase
