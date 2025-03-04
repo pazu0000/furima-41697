@@ -14,16 +14,14 @@ RSpec.describe User, type: :model do
 
     context '新規登録できない場合' do
       it 'nicknameが空では登録できない' do
-        user = FactoryBot.build(:user) # Userのインスタンス生成
-        user.nickname = '' # nicknameの値を空にする
-        user.valid?
-        expect(user.errors.full_messages).to include("Nickname can't be blank")
+        @user.nickname = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Nickname can't be blank")
       end
       it 'メールアドレスが空では登録できない' do
-        user = FactoryBot.build(:user) # Userのインスタンス生成
-        user.email = '' # emailの値を空にする
-        user.valid?
-        expect(user.errors.full_messages).to include("Email can't be blank")
+        @user.email = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Email can't be blank")
       end
       it '重複したメールアドレスは登録できない' do
         @user.save
