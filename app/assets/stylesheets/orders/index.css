@@ -155,3 +155,15 @@
   font-size: 14px;
   cursor: pointer;
 }
+
+#number-form,
+#expiry-form,
+#cvc-form {
+  width: 100%;
+  max-width: 400px;
+  min-height: 48px; /* ← これが超大事！！ */
+  padding: 10px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
