@@ -60,38 +60,3 @@
 | phone_number   | string     | null: false                    |
 | order          | references | null: false,foreign_key: true  |
 
-### Association
-- belongs_to :purchase
-
-○補足
-+-------------+            +-----------------------+
-|  Items      |            |   ActiveHash (補足)   |
-+-------------+            +-----------------------+
-| id          |            | Category (category_id)|
-| name        |            | ├ id: 1, "---"        |
-| category_id |----------> | ├ id: 2, "本"         |
-| condition_id|----------> | ├ id: 3, "家電"       |
-| shipping_fee_id|------>  | ├ id: 4, "洋服"       |
-| shipping_day_id|------>  | Condition (condition_id)|
-| prefecture_id|-------->  | ├ id: 1, "---"        |
-+-------------+            | ├ id: 2, "新品・未使用"|
-                           | ├ id: 3, "やや傷や汚れあり"|
-                            +-----------------------+
-
-※ category_id = 2 なら、それは "本" を意味している
-
-
-
-
-
-┌──────────────┐         ┌──────────────────┐
-│ Order         │◀────┐  │ ShippingAddress   │
-│ user_id       │     │  │ postal_code       │
-│ item_id       │     └──┤ prefecture_id     │
-└──────────────┘         │ city              │
-                         └──────────────────┘
-       ▲
-       │
-┌────────────┐     ┌────────────┐
-│ User       │     │ Item       │
-└────────────┘     └────────────┘
