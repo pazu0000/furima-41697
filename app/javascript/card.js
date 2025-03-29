@@ -1,4 +1,7 @@
-const pay = () => {
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("✅ DOMContentLoaded で読み込まれた！");
+});
+
   const publicKey = gon.public_key;
   const payjp = Payjp(publicKey);
   const elements = payjp.elements();
@@ -35,7 +38,7 @@ const pay = () => {
       cvcElement.clear();
     });
   });
-};
+;
 
-window.addEventListener("turbo:load", pay);
-window.addEventListener("turbo:render", pay);
+
+
