@@ -1,12 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("✅ DOMContentLoaded で読み込まれた！");
-});
 
   const publicKey = gon.public_key;
   const payjp = Payjp(publicKey);
   const elements = payjp.elements();
 
-  
   const numberElement = elements.create('cardNumber');
   const expiryElement = elements.create('cardExpiry');
   const cvcElement = elements.create('cardCvc');
@@ -16,10 +14,14 @@ document.addEventListener("DOMContentLoaded", () => {
   cvcElement.mount('#cvc-form');
 
   const form = document.getElementById('charge-form');
-  form.addEventListener("submit", (e) => {
-    e.preventDefault(); 
+  if (!form) {
+    console.error("❌ formが見つからない！");
+    return;
+  }
 
-  
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
     payjp.createToken(numberElement).then(function (response) {
       if (response.error) {
         alert("カード情報が正しくありません");
@@ -30,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
         tokenInput.setAttribute("name", "token");
         tokenInput.setAttribute("value", token);
         form.appendChild(tokenInput);
-        form.submit(); 
+        form.submit();
       }
 
       numberElement.clear();
@@ -38,7 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
       cvcElement.clear();
     });
   });
-;
-
+});
 
 
