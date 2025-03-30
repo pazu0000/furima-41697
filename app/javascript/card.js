@@ -19,6 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     payjp.createToken(numberElement).then(function (response) {
       if (response.error) {
+
+        form.submit();
         return; 
       }
 
